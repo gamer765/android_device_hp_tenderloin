@@ -26,7 +26,7 @@ PRODUCT_CHARACTERISTICS := tablet
 PRODUCT_AAPT_CONFIG := xlarge mdpi
 
 PRODUCT_PACKAGES += \
-	make_ext4fs
+    make_ext4fs
 
 PRODUCT_COPY_FILES += \
     device/hp/tenderloin/init.tenderloin.usb.rc:root/init.tenderloin.usb.rc \
@@ -82,11 +82,11 @@ PRODUCT_PACKAGES += \
 
 # QCOM OMX
 PRODUCT_PACKAGES += \
-	libstagefrighthw \
-	libOmxCore \
-	libmm-omxcore \
-	libdivxdrmdecrypt \
-	libOmxVdec
+    libstagefrighthw \
+    libOmxCore \
+    libmm-omxcore \
+    libdivxdrmdecrypt \
+    libOmxVdec
 
 # QCOM OMX Video Encoding/Tests
 #PRODUCT_PACKAGES += \
@@ -118,23 +118,23 @@ PRODUCT_COPY_FILES += \
 
 # Prebuilt alsa configs
 PRODUCT_COPY_FILES += \
-	device/hp/tenderloin/prebuilt/audio/usr/share/alsa/pcm/dsnoop.conf:system/usr/share/alsa/pcm/dsnoop.conf \
-	device/hp/tenderloin/prebuilt/audio/usr/share/alsa/pcm/dmix.conf:system/usr/share/alsa/pcm/dmix.conf \
-	device/hp/tenderloin/prebuilt/audio/usr/share/alsa/pcm/dpl.conf:system/usr/share/alsa/pcm/dpl.conf \
-	device/hp/tenderloin/prebuilt/audio/usr/share/alsa/pcm/modem.conf:system/usr/share/alsa/pcm/modem.conf \
-	device/hp/tenderloin/prebuilt/audio/usr/share/alsa/pcm/surround40.conf:system/usr/share/alsa/pcm/surround40.conf \
-	device/hp/tenderloin/prebuilt/audio/usr/share/alsa/pcm/iec958.conf:system/usr/share/alsa/pcm/iec958.conf \
-	device/hp/tenderloin/prebuilt/audio/usr/share/alsa/pcm/center_lfe.conf:system/usr/share/alsa/pcm/center_lfe.conf \
-	device/hp/tenderloin/prebuilt/audio/usr/share/alsa/pcm/default.conf:system/usr/share/alsa/pcm/default.conf \
-	device/hp/tenderloin/prebuilt/audio/usr/share/alsa/pcm/surround50.conf:system/usr/share/alsa/pcm/surround50.conf \
-	device/hp/tenderloin/prebuilt/audio/usr/share/alsa/pcm/rear.conf:system/usr/share/alsa/pcm/rear.conf \
-	device/hp/tenderloin/prebuilt/audio/usr/share/alsa/pcm/surround41.conf:system/usr/share/alsa/pcm/surround41.conf \
-	device/hp/tenderloin/prebuilt/audio/usr/share/alsa/pcm/side.conf:system/usr/share/alsa/pcm/side.conf \
-	device/hp/tenderloin/prebuilt/audio/usr/share/alsa/pcm/surround51.conf:system/usr/share/alsa/pcm/surround51.conf \
-	device/hp/tenderloin/prebuilt/audio/usr/share/alsa/pcm/front.conf:system/usr/share/alsa/pcm/front.conf \
-	device/hp/tenderloin/prebuilt/audio/usr/share/alsa/pcm/surround71.conf:system/usr/share/alsa/pcm/surround71.conf \
-	device/hp/tenderloin/prebuilt/audio/usr/share/alsa/alsa.conf:system/usr/share/alsa/alsa.conf \
-	device/hp/tenderloin/prebuilt/audio/usr/share/alsa/cards/aliases.conf:system/usr/share/alsa/cards/aliases.conf
+    device/hp/tenderloin/prebuilt/audio/usr/share/alsa/pcm/dsnoop.conf:system/usr/share/alsa/pcm/dsnoop.conf \
+    device/hp/tenderloin/prebuilt/audio/usr/share/alsa/pcm/dmix.conf:system/usr/share/alsa/pcm/dmix.conf \
+    device/hp/tenderloin/prebuilt/audio/usr/share/alsa/pcm/dpl.conf:system/usr/share/alsa/pcm/dpl.conf \
+    device/hp/tenderloin/prebuilt/audio/usr/share/alsa/pcm/modem.conf:system/usr/share/alsa/pcm/modem.conf \
+    device/hp/tenderloin/prebuilt/audio/usr/share/alsa/pcm/surround40.conf:system/usr/share/alsa/pcm/surround40.conf \
+    device/hp/tenderloin/prebuilt/audio/usr/share/alsa/pcm/iec958.conf:system/usr/share/alsa/pcm/iec958.conf \
+    device/hp/tenderloin/prebuilt/audio/usr/share/alsa/pcm/center_lfe.conf:system/usr/share/alsa/pcm/center_lfe.conf \
+    device/hp/tenderloin/prebuilt/audio/usr/share/alsa/pcm/default.conf:system/usr/share/alsa/pcm/default.conf \
+    device/hp/tenderloin/prebuilt/audio/usr/share/alsa/pcm/surround50.conf:system/usr/share/alsa/pcm/surround50.conf \
+    device/hp/tenderloin/prebuilt/audio/usr/share/alsa/pcm/rear.conf:system/usr/share/alsa/pcm/rear.conf \
+    device/hp/tenderloin/prebuilt/audio/usr/share/alsa/pcm/surround41.conf:system/usr/share/alsa/pcm/surround41.conf \
+    device/hp/tenderloin/prebuilt/audio/usr/share/alsa/pcm/side.conf:system/usr/share/alsa/pcm/side.conf \
+    device/hp/tenderloin/prebuilt/audio/usr/share/alsa/pcm/surround51.conf:system/usr/share/alsa/pcm/surround51.conf \
+    device/hp/tenderloin/prebuilt/audio/usr/share/alsa/pcm/front.conf:system/usr/share/alsa/pcm/front.conf \
+    device/hp/tenderloin/prebuilt/audio/usr/share/alsa/pcm/surround71.conf:system/usr/share/alsa/pcm/surround71.conf \
+    device/hp/tenderloin/prebuilt/audio/usr/share/alsa/alsa.conf:system/usr/share/alsa/alsa.conf \
+    device/hp/tenderloin/prebuilt/audio/usr/share/alsa/cards/aliases.conf:system/usr/share/alsa/cards/aliases.conf
 
 # Sensors, misc
 PRODUCT_PACKAGES += \
@@ -150,6 +150,14 @@ PRODUCT_PACKAGES += \
     com.android.future.usb.accessory \
     rebootcmd \
     TenderloinParts
+
+# MBM
+PRODUCT_PACKAGES += \
+    mbmd \
+    gps.tenderloin \
+    MbmService \
+    libmbm-ril \
+    Mms
 
 # Keylayouts
 PRODUCT_COPY_FILES += \

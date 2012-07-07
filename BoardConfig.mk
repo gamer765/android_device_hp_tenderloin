@@ -20,6 +20,12 @@ TARGET_ARCH_VARIANT := armv7-a-neon
 TARGET_CPU_SMP := true
 ARCH_ARM_HAVE_TLS_REGISTER := true
 
+# MBM support
+BOARD_HAVE_GPS_BCM := false
+BOARD_USES_MBM_GPS := true
+BOARD_GPS_LIBRARIES := gps.$(TARGET_BOOTLOADER_BOARD_NAME)
+USE_QEMU_GPS_HARDWARE := true
+
 
 TARGET_NO_RADIOIMAGE := true
 TARGET_HAVE_TSLIB := false
@@ -99,7 +105,7 @@ BOARD_USES_UBOOT_MULTIIMAGE := true
 BOARD_USES_CUSTOM_FSCK_MSDOS := true
 
 # Define kernel config for inline building
-TARGET_KERNEL_CONFIG := tenderloin_android_defconfig
+TARGET_KERNEL_CONFIG := tenderloin4g_android_defconfig
 
 # Define Prebuilt kernel locations
 TARGET_PREBUILT_KERNEL := device/hp/tenderloin/prebuilt/boot/kernel
