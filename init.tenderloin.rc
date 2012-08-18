@@ -38,9 +38,17 @@ on init
     mount ext3 /dev/block/mmcblk0p13 /boot remount ro wait noatime barrier=1
 
 
+<<<<<<< HEAD
     export EXTERNAL_STORAGE /mnt/sdcard
     mkdir /mnt/sdcard 0000 system system
     # for backwards compatibility
+=======
+    export EXTERNAL_STORAGE /storage/sdcard0
+    mkdir /storage 0050 system sdcard_r
+    mkdir /storage/sdcard0 0000 system system
+    # for backwards compatibility
+    symlink /storage/sdcard0 /mnt/sdcard
+>>>>>>> upstream/jellybean
     symlink /mnt/sdcard /sdcard
 
 on post-fs
