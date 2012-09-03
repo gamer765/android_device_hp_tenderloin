@@ -1088,7 +1088,7 @@ void open_uinput(void)
 		ALOGE("error tool rel\n");
 
 	if (ioctl(uinput_fd,UI_SET_ABSBIT,ABS_MT_PRESSURE) < 0)
-		LOGE("error tool rel\n");
+		ALOGE("error tool rel\n");
 
 	//if (ioctl(uinput_fd,UI_SET_ABSBIT,ABS_MT_WIDTH_MAJOR) < 0)
 	//	ALOGE("error tool rel\n");
