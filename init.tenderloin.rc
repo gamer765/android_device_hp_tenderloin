@@ -229,19 +229,27 @@ on property:init.svc.bootanim=stopped
 
 # MBM
 on init
-    setprop mbm.gps.config.gps_ctrl /dev/bus/usb/002/049
-    setprop mbm.gps.config.gps_nmea /dev/ttyACM2
-    setprop mbm.gps.config.gps_pref_mode PGPS
-    setprop mbm.gps.config.supl.enable_ni yes
-    setprop mbm.gps.config.supl.uncert yes
-
+# Enable USB auto suspend for MBM devices
     write /sys/bus/usb/devices/1-1/power/autosuspend 2
     write /sys/bus/usb/devices/1-1/power/control auto
     write /sys/bus/usb/devices/1-1/power/wakeup enabled
-    symlink /dev/bus/usb/002/049 /dev/cdc-wdm0
-    symlink /dev/bus/usb/002/050 /dev/cdc-wdm1
     chown radio radio /dev/cdc-wdm0
     chmod 0660 /dev/cdc-wdm0
     chown radio radio /dev/cdc-wdm1
     chmod 0660 /dev/cdc-wdm1
+
+# Set Loglevel for MBM GPS
+    setprop mbm.gps.config.loglevel INFO
+# Set the device for controlling the gps
+    setprop mbm.gps.config.gps_ctrl /dev/cdc-wdm0
+# Set the device for nmea data
+    setprop mbm.gps.config.gps_nmea /dev/ttyACM2
+# Set the desired mode (PGPS,SUPL or STANDALONE)
+    setprop mbm.gps.config.gps_pref_mode PGPS
+
+# The following settings are only used for SUPL
+# Enable network initiated requests
+    setprop mbm.gps.config.supl.enable_ni yes
+# Allow connecting to supl servers without certificates
+    setprop mbm.gps.config.supl.uncert yes
 
