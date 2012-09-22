@@ -3,7 +3,7 @@ $(call inherit-product, device/hp/tenderloin/device_tenderloin.mk)
 PRODUCT_RELEASE_NAME := Touchpad
 
 # Inherit some common CM stuff.
-$(call inherit-product, vendor/cm/config/common_full_tablet_wifionly.mk)
+$(call inherit-product, vendor/cm/config/common_full_phone.mk)
 
 # Inherit GSM common stuff
 $(call inherit-product, vendor/cm/config/gsm.mk)

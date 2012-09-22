@@ -153,11 +153,14 @@ PRODUCT_PACKAGES += \
 
 # MBM
 PRODUCT_PACKAGES += \
-    mbmd \
     gps.tenderloin \
     MbmService \
     libmbm-ril \
     Mms
+
+PRODUCT_COPY_FILES += \
+    device/hp/tenderloin/gps.conf:system/etc/gps.conf \
+    device/hp/tenderloin/apns-conf.xml:system/etc/apns-conf.xml
 
 # Keylayouts
 PRODUCT_COPY_FILES += \
@@ -239,4 +242,4 @@ PRODUCT_COPY_FILES += \
     device/hp/tenderloin/prebuilt/boot/moboot.splash.CyanogenMod.tga:moboot.splash.CyanogenMod.tga
 
 $(call inherit-product, frameworks/native/build/tablet-dalvik-heap.mk)
-$(call inherit-product, build/target/product/full_base.mk)
+$(call inherit-product, build/target/product/full_base_telephony.mk)
