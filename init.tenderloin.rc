@@ -233,6 +233,8 @@ on init
     write /sys/bus/usb/devices/1-1/power/autosuspend 2
     write /sys/bus/usb/devices/1-1/power/control auto
     write /sys/bus/usb/devices/1-1/power/wakeup enabled
+    symlink /dev/bus/usb/002/049 /dev/cdc-wdm0
+    symlink /dev/bus/usb/002/050 /dev/cdc-wdm1
     chown radio radio /dev/cdc-wdm0
     chmod 0660 /dev/cdc-wdm0
     chown radio radio /dev/cdc-wdm1
@@ -241,7 +243,7 @@ on init
 # Set Loglevel for MBM GPS
     setprop mbm.gps.config.loglevel INFO
 # Set the device for controlling the gps
-    setprop mbm.gps.config.gps_ctrl /dev/cdc-wdm0
+    setprop mbm.gps.config.gps_ctrl /dev/bus/usb/002/049
 # Set the device for nmea data
     setprop mbm.gps.config.gps_nmea /dev/ttyACM2
 # Set the desired mode (PGPS,SUPL or STANDALONE)
