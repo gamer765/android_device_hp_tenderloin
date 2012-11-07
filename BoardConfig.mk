@@ -25,6 +25,7 @@ BOARD_USES_MBM_GPS := true
 BOARD_GPS_LIBRARIES := gps.$(TARGET_BOOTLOADER_BOARD_NAME)
 USE_QEMU_GPS_HARDWARE := false
 
+TARGET_DISABLE_ARM_PIE := true
 TARGET_NO_RADIOIMAGE := true
 TARGET_HAVE_TSLIB := false
 TARGET_GLOBAL_CFLAGS += -mfpu=neon -mfloat-abi=softfp
@@ -85,9 +86,10 @@ BOARD_USE_QCOM_PMEM := true
 BOARD_CAMERA_USE_GETBUFFERINFO := true
 BOARD_FIRST_CAMERA_FRONT_FACING := true
 BOARD_CAMERA_USE_ENCODEDATA := true
+BOARD_NEEDS_MEMORYHEAPPMEM := true
 
 BOARD_OVERLAY_FORMAT_YCbCr_420_SP := true
-USE_CAMERA_STUB := true
+USE_CAMERA_STUB := false
 
 # tenderloin- these kernel settings are temporary to complete build
 BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.hardware=qcom
