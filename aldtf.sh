@@ -25,8 +25,6 @@ echo "Dumping event log"
 logcat -b events -v threadtime -d -f $eventlog *:v
 echo "Dumping radio log"
 logcat -b radio -v threadtime -d -f $radiolog *:v
-echo "Dumping radio log"
-logcat -b radio -v threadtime -d -f $radiolog *:v
 echo "Dumping property log"
 getprop > /sdcard/logs/property-$now.log
 if [ -e /proc/last_klog ]; then
