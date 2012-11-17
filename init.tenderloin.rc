@@ -241,6 +241,8 @@ on init
     chown radio radio /dev/cdc-wdm1
     chmod 0660 /dev/cdc-wdm1
 
+# Set NITZ Feature on or off
+    setprop mbm.ril.config.nitz no
 # Set Loglevel for MBM GPS
     setprop mbm.gps.config.loglevel INFO
 # Set the device for controlling the gps
