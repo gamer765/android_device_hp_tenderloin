@@ -88,11 +88,14 @@ PRODUCT_PACKAGES += \
     libdivxdrmdecrypt \
     libOmxVdec
 
-# QCOM OMX Video Encoding/Tests
+# QCOM OMX Video Encoding
+PRODUCT_PACKAGES += \
+	libOmxVenc
+
+# QCOM OMX Video Tests
 #PRODUCT_PACKAGES += \
 #	mm-vdev-omx-test \
 #	mm-video-driver-test \
-#	libOmxVenc \
 #	mm-venc-omx-test720p \
 #	mm-video-encdrv-test
 
@@ -135,6 +138,10 @@ PRODUCT_COPY_FILES += \
     device/hp/tenderloin/prebuilt/audio/usr/share/alsa/pcm/surround71.conf:system/usr/share/alsa/pcm/surround71.conf \
     device/hp/tenderloin/prebuilt/audio/usr/share/alsa/alsa.conf:system/usr/share/alsa/alsa.conf \
     device/hp/tenderloin/prebuilt/audio/usr/share/alsa/cards/aliases.conf:system/usr/share/alsa/cards/aliases.conf
+
+# Camera
+PRODUCT_PACKAGES += \
+    camera.msm8660
 
 # Sensors, misc
 PRODUCT_PACKAGES += \
