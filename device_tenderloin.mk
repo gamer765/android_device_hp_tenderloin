@@ -166,8 +166,9 @@ PRODUCT_PACKAGES += \
     Mms
 
 PRODUCT_COPY_FILES += \
-   device/hp/tenderloin/aldtf.sh:system/xbin/aldtf.sh \
    device/hp/tenderloin/xmesg:system/bin/xmesg \
+   device/hp/tenderloin/pollerr.sh:system/bin/pollerr.sh \
+   device/hp/tenderloin/aldtf.sh:system/xbin/aldtf.sh \
    device/hp/tenderloin/gps.conf:system/etc/gps.conf \
    device/hp/tenderloin/apns-conf.xml:system/etc/apns-conf.xml
 
