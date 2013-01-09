@@ -106,13 +106,18 @@ BOARD_USES_UBOOT_MULTIIMAGE := true
 # use dosfsck from dosfstools
 BOARD_USES_CUSTOM_FSCK_MSDOS := true
 
+# kernel has no ext4_lazyinit
+# (esp. important for make_ext4fs in recovery)
+BOARD_NO_EXT4_LAZYINIT := true
+
 # Define kernel config for inline building
 TARGET_KERNEL_CONFIG := tenderloin4g_android_defconfig
 
 # Define Prebuilt kernel locations
 TARGET_PREBUILT_KERNEL := device/hp/tenderloin/prebuilt/boot/kernel
-
+BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/hp/tenderloin/recovery/recovery_ui.c
 TARGET_RECOVERY_INITRC := device/hp/tenderloin/recovery/init.rc
+BOARD_HAS_NO_SELECT_BUTTON := false
 
 # tenderloin - these partition sizes are temporary to complete build
 TARGET_USERIMAGES_USE_EXT4 := true
