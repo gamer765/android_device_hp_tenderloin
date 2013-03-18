@@ -46,8 +46,13 @@ on init
 
 on post-fs
     # camera calibration
-    mkdir /data/misc/camera 0770 media media
+    mkdir /data/misc/camera 0770 media system
     mkdir /data/misc/camera/R5_MVEN003_LD2_ND0_IR0_SH0_FL1_SVEN003_DCCID1044 0770 media media
+
+    # camera config
+    exec /system/bin/touch /data/misc/camera/config.txt
+    chown media system /data/misc/camera/config.txt
+    chmod 660 /data/misc/camera/config.txt
 
     setprop vold.post_fs_data_done 1
 
@@ -119,22 +124,14 @@ on boot
     write /sys/devices/system/cpu/cpufreq/ondemand/up_threshold 90
     write /sys/devices/system/cpu/cpufreq/ondemand/sampling_rate 50000
 
-    # allow libaudio to change idle collapse on open/close
-    #chown audio audio /sys/module/pm_8x60/modes/cpu0/power_collapse/idle_enabled
-    #chmod 0660 /sys/module/pm_8x60/modes/cpu0/power_collapse/idle_enabled
-    #chown audio audio /sys/module/pm_8x60/modes/cpu0/standalone_power_collapse/idle_enabled
-    #chmod 0660 /sys/module/pm_8x60/modes/cpu0/standalone_power_collapse/idle_enabled
-    #chown audio audio /sys/module/pm_8x60/modes/cpu1/power_collapse/idle_enabled
-    #chmod 0660 /sys/module/pm_8x60/modes/cpu1/power_collapse/idle_enabled
-    #chown audio audio /sys/module/pm_8x60/modes/cpu1/standalone_power_collapse/idle_enabled
-    #chmod 0660 /sys/module/pm_8x60/modes/cpu1/standalone_power_collapse/idle_enabled
-
     # Enable power collapse where always safe
     write /sys/module/pm_8x60/modes/cpu0/power_collapse/suspend_enabled 1
+    write /sys/module/pm_8x60/modes/cpu0/power_collapse/idle_enabled 1
     write /sys/module/pm_8x60/modes/cpu0/standalone_power_collapse/suspend_enabled 1
-    #write /sys/module/pm_8x60/modes/cpu1/power_collapse/idle_enabled 1
+    write /sys/module/pm_8x60/modes/cpu0/standalone_power_collapse/idle_enabled 1
+    write /sys/module/pm_8x60/modes/cpu1/power_collapse/idle_enabled 1
     write /sys/module/pm_8x60/modes/cpu1/power_collapse/suspend_enabled 1
-    #write /sys/module/pm_8x60/modes/cpu1/standalone_power_collapse/idle_enabled 1
+    write /sys/module/pm_8x60/modes/cpu1/standalone_power_collapse/idle_enabled 1
     write /sys/module/pm_8x60/modes/cpu1/standalone_power_collapse/suspend_enabled 1
     write /sys/module/rpm_resources/enable_low_power/vdd_dig 2
     write /sys/module/rpm_resources/enable_low_power/vdd_mem 2
@@ -152,8 +149,8 @@ on boot
     insmod /system/lib/modules/cfg80211.ko
 
     # change permissions for i2c-2 device
-    chmod 0660 /dev/i2c-2
-    chown media media /dev/i2c-2
+	chmod 0660 /dev/i2c-2
+	chown media media /dev/i2c-2
 
 on property:persist.service.adb.enable=1
     start adbd
@@ -162,14 +159,14 @@ on property:persist.service.adb.enable=0
     stop adbd
 
 service wpa_supplicant /system/bin/wpa_supplicant -Dnl80211 -iwlan0 -c/data/misc/wifi/wpa_supplicant.conf
-    #   we will start as root and wpa_supplicant will switch to user wifi
-    #   after setting up the capabilities required for WEXT
-    #   user wifi
-    #   group wifi inet keystore
-    class main
-    socket wpa_wlan0 dgram 660 wifi wifi
-    disabled
-    oneshot
+	#   we will start as root and wpa_supplicant will switch to user wifi
+	#   after setting up the capabilities required for WEXT
+	#   user wifi
+	#   group wifi inet keystore
+	class main
+	socket wpa_wlan0 dgram 660 wifi wifi
+	disabled
+	oneshot
 
 service dhcpcd_wlan0 /system/bin/dhcpcd -ABKL
     class main
