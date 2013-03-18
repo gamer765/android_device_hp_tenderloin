@@ -149,8 +149,8 @@ on boot
     insmod /system/lib/modules/cfg80211.ko
 
     # change permissions for i2c-2 device
-	chmod 0660 /dev/i2c-2
-	chown media media /dev/i2c-2
+    chmod 0660 /dev/i2c-2
+    chown media media /dev/i2c-2
 
 on property:persist.service.adb.enable=1
     start adbd
@@ -159,14 +159,14 @@ on property:persist.service.adb.enable=0
     stop adbd
 
 service wpa_supplicant /system/bin/wpa_supplicant -Dnl80211 -iwlan0 -c/data/misc/wifi/wpa_supplicant.conf
-	#   we will start as root and wpa_supplicant will switch to user wifi
-	#   after setting up the capabilities required for WEXT
-	#   user wifi
-	#   group wifi inet keystore
-	class main
-	socket wpa_wlan0 dgram 660 wifi wifi
-	disabled
-	oneshot
+    #   we will start as root and wpa_supplicant will switch to user wifi
+    #   after setting up the capabilities required for WEXT
+    #   user wifi
+    #   group wifi inet keystore
+    class main
+    socket wpa_wlan0 dgram 660 wifi wifi
+    disabled
+    oneshot
 
 service dhcpcd_wlan0 /system/bin/dhcpcd -ABKL
     class main
