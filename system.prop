@@ -1,7 +1,7 @@
 #
 # system.prop for tenderloin
 #
-#ro.sf.hwrotation=270
+ro.sf.hwrotation=270
 
 ro.additionalmounts=/mnt/usbdisk
 
