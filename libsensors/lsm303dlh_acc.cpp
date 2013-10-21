@@ -50,7 +50,7 @@ int Lsm303dlhGSensor::enable(int32_t handle, int en)
 {
     int err = 0;
 
-    int newState = en ? 1 : 0;
+    unsigned int newState = en ? 1 : 0;
 
     // don't set enable state if it's already valid
     if(mEnabled == newState) {
@@ -61,9 +61,10 @@ int Lsm303dlhGSensor::enable(int32_t handle, int en)
     int fd = open(LSM303DLH_ACC_ENABLE_FILE, O_WRONLY);
     if(fd >= 0) {
         char buffer[20];
-        int bytes = sprintf(buffer, "%d\n", newState);
+        int bytes = sprintf(buffer, "%u\n", newState);
         err = write(fd, buffer, bytes);
         err = err < 0 ? -errno : 0;
+        close(fd);
     } else {
         err = -errno;
     }
@@ -87,22 +88,24 @@ int Lsm303dlhGSensor::setDelay(int32_t handle, int64_t ns)
         if (ns < 0)
             return -EINVAL;
 
+        unsigned long delay = ns / 1000000; //nano to mili
+
         // ok we need to set our enabled state
         int fd = open(LSM303DLH_ACC_DELAY_FILE, O_WRONLY);
         if(fd >= 0) {
             char buffer[20];
-            int bytes = sprintf(buffer, "%d\n", 100/*ns / (100 * 100)*/);
+            int bytes = sprintf(buffer, "%lu\n", delay);
             err = write(fd, buffer, bytes);
             err = err < 0 ? -errno : 0;
+            close(fd);
         } else {
             err = -errno;
         }
 
-		close(fd);
-
         ALOGE_IF(err < 0,
                 "Error setting delay of LSM303DLH accelerometer (%s)",
-                strerror(-err)); } 
+                strerror(-err));
+    }
     return err;
 }
 
@@ -141,10 +144,10 @@ void Lsm303dlhGSensor::processEvent(int code, int value)
 {
     switch (code) {
         case EVENT_TYPE_ACCEL_X:
-            mPendingEvent.acceleration.x = value * CONVERT_A_X;
+            mPendingEvent.acceleration.y = value * CONVERT_A_X;
             break;
         case EVENT_TYPE_ACCEL_Y:
-            mPendingEvent.acceleration.y = value * CONVERT_A_Y;
+            mPendingEvent.acceleration.x = value * -CONVERT_A_Y;
             break;
         case EVENT_TYPE_ACCEL_Z:
             mPendingEvent.acceleration.z = value * CONVERT_A_Z;
