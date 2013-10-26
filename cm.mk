@@ -17,4 +17,4 @@ PRODUCT_BRAND := HP
 PRODUCT_MODEL := TouchPad
 PRODUCT_MANUDFACTURER := HP
 
-PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=touchpad BUILD_FINGERPRINT=hp/hp_tenderloin/tenderloin:4.1.1/JR003C/228551:user/release-keys PRIVATE_BUILD_DESC="tenderloin-user 4.1.1 JR003C 228551 release-keys"
+PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=touchpad BUILD_FINGERPRINT=hp/hp_tenderloin/tenderloin:4.2.2/JDQ39/573038:user/release-keys PRIVATE_BUILD_DESC="tenderloin-user 4.2.2 JDQ39 573038 release-keys"
