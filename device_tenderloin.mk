@@ -116,6 +116,7 @@ PRODUCT_PACKAGES += \
 
 # Sensors, misc
 PRODUCT_PACKAGES += \
+	power.tenderloin \
     librs_jni \
     wpa_supplicant.conf \
     libmllite \
