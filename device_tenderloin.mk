@@ -203,8 +203,6 @@ PRODUCT_COPY_FILES += \
 
 $(call inherit-product, frameworks/native/build/tablet-dalvik-heap.mk)
 
-$(call inherit-product-if-exists, vendor/goomanager/goo.mk)
-
 $(call inherit-product-if-exists, vendor/hp/tenderloin/tenderloin-vendor.mk)
 
 $(call inherit-product-if-exists, vendor/fonts-roboto/fonts.mk)
